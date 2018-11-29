@@ -1,0 +1,8 @@
+<!ELEMENT person ((mother | father)? |
+                  (father, mother) |
+                  (mother, father))>
+<!ELEMENT mother (person)>
+<!ELEMENT father (person)>
+
+<!ATTLIST person name CDATA #REQUIRED>
+<!ATTLIST person died CDATA #IMPLIED>

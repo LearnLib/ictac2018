@@ -1,0 +1,32 @@
+digraph g {
+margin=0;
+pad="0.5,0.05";
+rankdir=LR;
+__start0 [label="" shape="none" width="0"];
+__start1 [label="" shape="none" width="0"];
+
+	s0 [shape="doublecircle" label="S 0"];
+	s1 [shape="doublecircle" label="S 1"];
+	s2 [shape="doublecircle" label="S 2"];
+	s3 [shape="doublecircle" label="S 3"];
+	s4 [shape="circle" label="S 4"];
+	s5 [shape="circle" label="S 5"];
+	s6 [shape="circle" label="T 0"];
+	s7 [shape="doublecircle" label="T 1"];
+	s8 [shape="doublecircle" label="T 2"];
+	s9 [shape="circle" label="T 3"];
+	s0 -> s1 [label="a"];
+	s0 -> s2 [label="b"];
+	s0 -> s3 [style="dashed" label="T"];
+	s1 -> s4 [style="dashed" label="S"];
+	s2 -> s5 [style="dashed" label="S"];
+	s4 -> s3 [label="a"];
+	s5 -> s3 [label="b"];
+	s6 -> s7 [label="c"];
+	s6 -> s8 [style="dashed" label="S"];
+	s7 -> s9 [style="dashed" label="T"];
+	s9 -> s8 [label="c"];
+
+__start0 -> s6;
+__start1 -> s0;
+}

@@ -1,0 +1,39 @@
+digraph g {
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s2 [shape="circle" label="2"];
+	s3 [shape="circle" label="3"];
+	s4 [shape="circle" label="4"];
+	s5 [shape="circle" label="5"];
+	s6 [shape="circle" label="6"];
+	s7 [shape="circle" label="7"];
+	s8 [shape="circle" label="8"];
+	s9 [shape="circle" label="9"];
+	s10 [shape="circle" label="10"];
+	s11 [shape="circle" label="11"];
+	s12 [shape="circle" label="12"];
+	s13 [shape="circle" label="13"];
+	s14 [shape="circle" label="14"];
+	s15 [shape="circle" label="15"];
+	s16 [shape="doublecircle" label="16"];
+	s0 -> s1 [label="a"];
+	s1 -> s2 [label="b"];
+	s2 -> s3 [label="c"];
+	s3 -> s4 [style="dashed" label="R/(0,D)"];
+	s3 -> s5 [style="dashed" label="R/(4,D)"];
+	s3 -> s6 [style="dashed" label="R/(5,D)"];
+	s3 -> s7 [style="dashed" label="R/(6,D)"];
+	s7 -> s8 [style="dashed" label="R/(0,C)"];
+	s7 -> s9 [style="dashed" label="R/(8,C)"];
+	s7 -> s10 [style="dashed" label="R/(9,C)"];
+	s7 -> s11 [style="dashed" label="R/(10,C)"];
+	s11 -> s12 [style="dashed" label="R/(0,B)"];
+	s11 -> s13 [style="dashed" label="R/(12,B)"];
+	s11 -> s14 [style="dashed" label="R/(13,B)"];
+	s11 -> s15 [style="dashed" label="R/(14,B)"];
+	s15 -> s16 [style="dashed" label="R/(0,A)"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}

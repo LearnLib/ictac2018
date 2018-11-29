@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE person SYSTEM "pedigree.dtd">
+
+<person name="bob">
+    <mother>
+        <person name="bobina"/>
+    </mother>
+    <father>
+        <person name="bobson" died="2003">
+            <mother>
+                <person name="bobette" died="1974"/>
+            </mother>
+        </person>
+    </father>
+</person>

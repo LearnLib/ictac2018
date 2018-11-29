@@ -1,0 +1,49 @@
+digraph g {
+margin=0;
+pad="0.5,0.05";
+rankdir=LR;
+
+	s0 [shape="circle" label="A 0"];
+	s1 [shape="circle" label="A 1"];
+	s2 [shape="circle" label="A 2"];
+	s3 [shape="doublecircle" label="A 3"];
+	s4 [shape="circle" label="A 4"];
+	s5 [shape="circle" label="B 0"];
+	s6 [shape="circle" label="B 1"];
+	s7 [shape="circle" label="B 2"];
+	s8 [shape="doublecircle" label="B 3"];
+	s9 [shape="circle" label="B 4"];
+	s10 [shape="circle" label="C 0"];
+	s11 [shape="circle" label="C 1"];
+	s12 [shape="circle" label="C 2"];
+	s13 [shape="doublecircle" label="C 3"];
+	s14 [shape="circle" label="C 4"];
+	s15 [shape="circle" label="D 0"];
+	s16 [shape="circle" label="D 1"];
+	s17 [shape="doublecircle" label="D 2"];
+	s18 [shape="circle" label="D 3"];
+	s0 -> s4 [style="dashed" label="B"];
+	s1 -> s2 [style="dashed" label="B"];
+	s2 -> s3 [style="dashed" label="B"];
+	s4 -> s1 [style="dashed" label="B"];
+	s5 -> s9 [style="dashed" label="C"];
+	s6 -> s7 [style="dashed" label="C"];
+	s7 -> s8 [style="dashed" label="C"];
+	s9 -> s6 [style="dashed" label="C"];
+	s10 -> s14 [style="dashed" label="D"];
+	s11 -> s12 [style="dashed" label="D"];
+	s12 -> s13 [style="dashed" label="D"];
+	s14 -> s11 [style="dashed" label="D"];
+	s15 -> s18 [label="a"];
+	s16 -> s17 [label="c"];
+	s18 -> s16 [label="b"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s5;
+__start1 [label="" shape="none" width="0" height="0"];
+__start1 -> s10;
+__start2 [label="" shape="none" width="0" height="0"];
+__start2 -> s15;
+__start3 [label="" shape="none" width="0" height="0"];
+__start3 -> s0;
+}

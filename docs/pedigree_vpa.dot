@@ -1,0 +1,31 @@
+digraph g {
+margin=0;
+pad="0.5,0.05";
+
+	s0 [shape="circle" label="0"];
+	s1 [shape="circle" label="1"];
+	s2 [shape="doublecircle" label="2"];
+	s4 [shape="circle" label="4"];
+	s5 [shape="circle" label="5"];
+	s6 [shape="circle" label="6"];
+	s7 [shape="circle" label="7"];
+	s8 [shape="circle" label="8"];
+	s0 -> s1 [label="name"];
+	s0 -> s5 [label="died"];
+	s1 -> s4 [label="died"];
+	s1 -> s2 [style="dashed" label="R/(0,PERSON)"];
+	s2 -> s7 [style="dashed" label="R/(1,MOTHER)"];
+	s2 -> s6 [style="dashed" label="R/(1,FATHER)"];
+	s2 -> s7 [style="dashed" label="R/(4,MOTHER)"];
+	s2 -> s6 [style="dashed" label="R/(4,FATHER)"];
+	s2 -> s8 [style="dashed" label="R/(6,MOTHER)"];
+	s2 -> s8 [style="dashed" label="R/(7,FATHER)"];
+	s4 -> s2 [style="dashed" label="R/(0,PERSON)"];
+	s5 -> s4 [label="name"];
+	s6 -> s2 [style="dashed" label="R/(0,PERSON)"];
+	s7 -> s2 [style="dashed" label="R/(0,PERSON)"];
+	s8 -> s2 [style="dashed" label="R/(0,PERSON)"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s0;
+}

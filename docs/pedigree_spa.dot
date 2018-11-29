@@ -1,0 +1,36 @@
+digraph g {
+margin=0;
+pad="0.5,0.05";
+rankdir=LR;
+
+	s0 [shape="circle" label="FATHER 0"];
+	s1 [shape="doublecircle" label="FATHER 1"];
+	s9 [shape="circle" label="MOTHER 0"];
+	s10 [shape="doublecircle" label="MOTHER 1"];
+	s2 [shape="circle" label="PERSON 0"];
+	s3 [shape="doublecircle" label="PERSON 1"];
+	s4 [shape="circle" label="PERSON 3"];
+	s5 [shape="doublecircle" label="PERSON 4"];
+	s6 [shape="doublecircle" label="PERSON 5"];
+	s7 [shape="doublecircle" label="PERSON 6"];
+	s8 [shape="doublecircle" label="PERSON 7"];
+	s0 -> s1 [style="dashed" label="PERSON"];
+	s2 -> s3 [label="name"];
+	s2 -> s4 [label="died"];
+	s3 -> s5 [label="died"];
+	s3 -> s6 [style="dashed" label="FATHER"];
+	s3 -> s7 [style="dashed" label="MOTHER"];
+	s4 -> s5 [label="name"];
+	s5 -> s6 [style="dashed" label="FATHER"];
+	s5 -> s7 [style="dashed" label="MOTHER"];
+	s6 -> s8 [style="dashed" label="MOTHER"];
+	s7 -> s8 [style="dashed" label="FATHER"];
+	s9 -> s10 [style="dashed" label="PERSON"];
+
+__start0 [label="" shape="none" width="0" height="0"];
+__start0 -> s9;
+__start1 [label="" shape="none" width="0" height="0"];
+__start1 -> s0;
+__start2 [label="" shape="none" width="0" height="0"];
+__start2 -> s2;
+}
