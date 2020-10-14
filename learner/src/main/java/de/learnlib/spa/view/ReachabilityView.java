@@ -106,7 +106,7 @@ public class ReachabilityView<S, I> implements Graph<Pair<I, S>, Pair<Pair<I, S>
                     .stream()
                     .filter(localDisplayMap::containsKey)
                     .filter(localDisplayMap::get)
-                    .forEach(s -> result.add(new Pair<>(procedure, s)));
+                    .forEach(s -> result.add(Pair.of(procedure, s)));
         }
 
         return result;
@@ -127,7 +127,7 @@ public class ReachabilityView<S, I> implements Graph<Pair<I, S>, Pair<Pair<I, S>
             final Boolean isDisplayed = localDisplayMap.get(subModel.getSuccessor(state, i));
 
             if (isDisplayed != null && isDisplayed) {
-                result.add(new Pair<>(node, i));
+                result.add(Pair.of(node, i));
             }
         }
 
@@ -144,7 +144,7 @@ public class ReachabilityView<S, I> implements Graph<Pair<I, S>, Pair<Pair<I, S>
         final DFA<S, I> subModel = subModels.get(identifier);
 
         final S next = subModel.getSuccessor(state.getSecond(), input);
-        return new Pair<>(state.getFirst(), next);
+        return Pair.of(state.getFirst(), next);
     }
 
     @Override

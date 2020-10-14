@@ -28,7 +28,6 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import de.learnlib.api.AccessSequenceTransformer;
 import de.learnlib.api.algorithm.LearningAlgorithm;
-import de.learnlib.api.algorithm.feature.SupportsGrowingAlphabet;
 import de.learnlib.api.oracle.MembershipOracle;
 import de.learnlib.api.query.DefaultQuery;
 import de.learnlib.filter.statistic.oracle.JointCounterOracle;
@@ -42,10 +41,12 @@ import de.learnlib.spa.impl.EmptySPA;
 import de.learnlib.spa.impl.OptimizingATRProvider;
 import de.learnlib.spa.impl.ProceduralMembershipOracle;
 import de.learnlib.util.MQUtil;
+import net.automatalib.SupportsGrowingAlphabet;
 import net.automatalib.automata.fsa.DFA;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
+import net.automatalib.words.impl.GrowingMapAlphabet;
 
 /**
  * The learning algorithm for {@link DefaultSPA}s.
@@ -179,7 +180,7 @@ public class SPALearner<I, L extends LearningAlgorithm.DFALearner<I> & SupportsG
         final Set<I> newProcedures = atrProvider.scanPositiveCounterexample(input);
 
         for (I sym : newProcedures) {
-            final L newLearner = learnerProvider.apply(this.alphabet.getInternalAlphabet(),
+            final L newLearner = learnerProvider.apply(new GrowingMapAlphabet<>(this.alphabet.getInternalAlphabet()),
                                                        new ProceduralMembershipOracle<>(alphabet,
                                                                                         oracle,
                                                                                         sym,

@@ -59,13 +59,12 @@ public abstract class AbstractCFGBenchmark extends AbstractBenchmark<String> {
     }
 
     @Override
-    protected Function<MembershipOracle<String, Boolean>, EquivalenceOracle<DeterministicAcceptorTS<?, String>, String, Boolean>> getEquivalenceOracleSupplier() {
+    protected Function<MembershipOracle<String, Boolean>, EquivalenceOracle<? super DeterministicAcceptorTS<?, String>, String, Boolean>> getEquivalenceOracleSupplier() {
 
         final Collection<Word<String>> negativeQueries =
                 getStaticTraces().stream().map(s -> s.split("")).map(Word::fromSymbols).collect(Collectors.toList());
 
         return mqo -> new RandomCfgEQOracle(mqo,
-                                            instrumentationResult.getAlphabet(),
                                             RANDOM,
                                             instrumentationResult.getGrammar(),
                                             instrumentationResult.getInitialCallSymbol(),

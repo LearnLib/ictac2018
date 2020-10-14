@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 import de.learnlib.api.oracle.MembershipOracle;
 import de.learnlib.oracle.equivalence.vpda.RandomWellMatchedWordsEQOracle;
 import de.learnlib.spa.api.SPAAlphabet;
-import net.automatalib.ts.acceptors.DeterministicAcceptorTS;
+import net.automatalib.automata.concepts.Output;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 
@@ -54,7 +54,7 @@ public class RootedWMRandomEQOracle<I> extends RandomWellMatchedWordsEQOracle<I>
                                   int maxTests,
                                   Random random,
                                   Collection<Word<I>> additionalQueries) {
-        super(random, mqOracle, alphabet, callProb, maxTests, 0, ceLength);
+        super(random, mqOracle, callProb, maxTests, 0, ceLength);
 
         this.startProcedure = startProcedure;
         this.returnSymbol = alphabet.getReturnSymbol(0);
@@ -62,8 +62,7 @@ public class RootedWMRandomEQOracle<I> extends RandomWellMatchedWordsEQOracle<I>
     }
 
     @Override
-    protected Stream<Word<I>> generateTestWords(DeterministicAcceptorTS<?, I> hypothesis,
-                                                Collection<? extends I> inputs) {
+    protected Stream<Word<I>> generateTestWords(Output<I, Boolean> hypothesis, Collection<? extends I> inputs) {
 
         final WordBuilder<I> wb = new WordBuilder<>();
         final Stream<Word<I>> rootedStream = super.generateTestWords(hypothesis, inputs).map(w -> {

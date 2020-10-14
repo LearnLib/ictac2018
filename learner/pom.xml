@@ -21,7 +21,7 @@ limitations under the License.
     <parent>
         <groupId>de.learnlib.spa</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT-learnlib-0.16.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

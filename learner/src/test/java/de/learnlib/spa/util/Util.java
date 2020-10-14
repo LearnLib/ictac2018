@@ -35,7 +35,7 @@ import net.automatalib.words.GrowingAlphabet;
 import net.automatalib.words.VPDAlphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
-import net.automatalib.words.impl.SimpleAlphabet;
+import net.automatalib.words.impl.GrowingMapAlphabet;
 
 public class Util {
 
@@ -144,7 +144,7 @@ public class Util {
             throw new IllegalStateException("There are non-accessible procedures");
         }
 
-        return Pair.make(accessSequences, returnSequences);
+        return Pair.of(accessSequences, returnSequences);
     }
 
     private static <S, I> boolean computeAccessAndReturnSequencesInternal(VPDAlphabet<I> alphabet,
@@ -198,7 +198,7 @@ public class Util {
                     potentialAccessBuilder.add(input);
                 }
 
-                if (finishedProcedures.containsAll(alphabet.getCallSymbols())) {
+                if (finishedProcedures.containsAll(alphabet.getCallAlphabet())) {
                     return updated;
                 }
 
@@ -210,7 +210,7 @@ public class Util {
 
     public static <I> boolean testEquivalence(SPA<?, I> expected, SPA<?, I> actual) {
         final SPAAlphabet<I> alphabet = expected.getInputAlphabet();
-        final GrowingAlphabet<I> proceduralAlphabet = new SimpleAlphabet<>();
+        final GrowingAlphabet<I> proceduralAlphabet = new GrowingMapAlphabet<>();
         proceduralAlphabet.addAll(alphabet.getCallAlphabet());
         proceduralAlphabet.addAll(alphabet.getInternalAlphabet());
 

@@ -70,7 +70,7 @@ public class PedigreeBenchmark extends AbstractBenchmark<InputSymbol> {
     }
 
     @Override
-    protected Function<MembershipOracle<InputSymbol, Boolean>, EquivalenceOracle<DeterministicAcceptorTS<?, InputSymbol>, InputSymbol, Boolean>> getEquivalenceOracleSupplier() {
+    protected Function<MembershipOracle<InputSymbol, Boolean>, EquivalenceOracle<? super DeterministicAcceptorTS<?, InputSymbol>, InputSymbol, Boolean>> getEquivalenceOracleSupplier() {
 
         final Word<InputSymbol> initialTrace = Samples.ALL_PROCEDURES;
         // Alternatively, use a query with redundancy to see the impact of the learning performance

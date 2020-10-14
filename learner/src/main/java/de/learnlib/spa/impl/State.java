@@ -14,9 +14,8 @@
  */
 package de.learnlib.spa.impl;
 
+import java.util.Objects;
 import java.util.Stack;
-
-import net.automatalib.commons.util.Pair;
 
 /**
  * A state in a {@link DefaultSPA}. Consist of a location and a stack content.
@@ -28,25 +27,34 @@ import net.automatalib.commons.util.Pair;
  *
  * @author frohme
  */
-public class State<I, S> extends Pair<I, S> {
+public class State<I, S> {
 
     private final Stack<State<I, S>> stack;
+    private final I first;
+    private final S second;
 
     public State(I first, S second) {
-        super(first, second);
-        this.stack = new Stack<>();
+        this(first, second, new Stack<>());
     }
 
     public State(I first, S second, final Stack<State<I, S>> stack) {
-        super(first, second);
+        this.first = first;
+        this.second = second;
         this.stack = stack;
     }
 
     @SuppressWarnings("unchecked")
     public State(I first, S second, Stack<State<I, S>> stack, State<I, S> newTopOfStack) {
-        super(first, second);
-        this.stack = (Stack<State<I, S>>) stack.clone();
+        this(first, second, (Stack<State<I, S>>) stack.clone());
         this.stack.add(newTopOfStack);
+    }
+
+    public I getFirst() {
+        return first;
+    }
+
+    public S getSecond() {
+        return second;
     }
 
     @Override
@@ -69,13 +77,12 @@ public class State<I, S> extends Pair<I, S> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        if (!super.equals(o)) {
-            return false;
-        }
 
         State<?, ?> that = (State<?, ?>) o;
 
-        return getStack().equals(that.getStack());
+        return Objects.equals(this.getFirst(), that.getFirst()) &&
+               Objects.equals(this.getSecond(), that.getSecond()) &&
+               Objects.equals(this.getStack(), that.getStack());
     }
 
     public Stack<State<I, S>> getStack() {

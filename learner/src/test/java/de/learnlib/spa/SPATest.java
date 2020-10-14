@@ -20,7 +20,6 @@ import java.util.function.Function;
 
 import de.learnlib.api.AccessSequenceTransformer;
 import de.learnlib.api.algorithm.LearningAlgorithm;
-import de.learnlib.api.algorithm.feature.SupportsGrowingAlphabet;
 import de.learnlib.api.oracle.EquivalenceOracle;
 import de.learnlib.api.oracle.MembershipOracle;
 import de.learnlib.api.query.DefaultQuery;
@@ -40,6 +39,7 @@ import de.learnlib.spa.learner.SPALearner;
 import de.learnlib.spa.util.Generator;
 import de.learnlib.spa.util.SPAEQ;
 import de.learnlib.spa.util.Util;
+import net.automatalib.SupportsGrowingAlphabet;
 import net.automatalib.words.Alphabet;
 import net.automatalib.words.impl.Alphabets;
 import org.testng.Assert;

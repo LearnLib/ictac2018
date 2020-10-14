@@ -33,7 +33,7 @@ import net.automatalib.words.Alphabet;
 import net.automatalib.words.GrowingAlphabet;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
-import net.automatalib.words.impl.SimpleAlphabet;
+import net.automatalib.words.impl.GrowingMapAlphabet;
 
 public class SPAEQ<I> implements EquivalenceOracle<SPA<?, I>, I, Boolean> {
 
@@ -50,7 +50,7 @@ public class SPAEQ<I> implements EquivalenceOracle<SPA<?, I>, I, Boolean> {
         this.spa = spa;
 
         final SPAAlphabet<I> alphabet = spa.getInputAlphabet();
-        final Alphabet<I> proceduralAlphabet = new SimpleAlphabet<>();
+        final Alphabet<I> proceduralAlphabet = new GrowingMapAlphabet<>();
 
         proceduralAlphabet.addAll(alphabet.getCallAlphabet());
         proceduralAlphabet.addAll(alphabet.getInternalAlphabet());
@@ -86,7 +86,7 @@ public class SPAEQ<I> implements EquivalenceOracle<SPA<?, I>, I, Boolean> {
         }
 
         final SPAAlphabet<I> alphabet = (SPAAlphabet<I>) inputs;
-        final GrowingAlphabet<I> proceduralAlphabet = new SimpleAlphabet<>();
+        final GrowingAlphabet<I> proceduralAlphabet = new GrowingMapAlphabet<>();
 
         proceduralAlphabet.addAll(alphabet.getCallAlphabet());
         proceduralAlphabet.addAll(alphabet.getInternalAlphabet());
@@ -106,7 +106,7 @@ public class SPAEQ<I> implements EquivalenceOracle<SPA<?, I>, I, Boolean> {
 
                     final CompactDFA<I> copy = new CompactDFA<>(proceduralAlphabet, hypProc.size() + 1);
 
-                    final GrowingAlphabet<I> proceduralHypAlphabet = new SimpleAlphabet<>();
+                    final GrowingAlphabet<I> proceduralHypAlphabet = new GrowingMapAlphabet<>();
                     proceduralHypAlphabet.addAll(hypothesis.getProcedures().keySet());
                     proceduralHypAlphabet.addAll(alphabet.getInternalAlphabet());
 
@@ -157,7 +157,7 @@ public class SPAEQ<I> implements EquivalenceOracle<SPA<?, I>, I, Boolean> {
     private ATRTuple<I> computeATRTuple(final SPA<?, I> spa) {
 
         final SPAAlphabet<I> alphabet = spa.getInputAlphabet();
-        final Alphabet<I> proceduralAlphabet = new SimpleAlphabet<>();
+        final Alphabet<I> proceduralAlphabet = new GrowingMapAlphabet<>();
 
         proceduralAlphabet.addAll(spa.getProcedures().keySet());
         proceduralAlphabet.addAll(alphabet.getInternalAlphabet());

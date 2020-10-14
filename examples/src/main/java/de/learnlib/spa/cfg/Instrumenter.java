@@ -20,8 +20,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.annotation.Nullable;
-
 import analysis.coverage.Analyzer;
 import com.google.common.collect.Sets;
 import de.learnlib.api.oracle.QueryAnswerer;
@@ -130,7 +128,6 @@ public final class Instrumenter {
             this.analyzer = analyzer;
         }
 
-        @Nullable
         @Override
         public Boolean answerQuery(Word<String> prefix, Word<String> suffix) {
             final String query = prefix.concat(suffix).stream().collect(Collectors.joining(" "));

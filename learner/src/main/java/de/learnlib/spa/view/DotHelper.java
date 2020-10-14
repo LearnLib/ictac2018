@@ -49,7 +49,7 @@ class DotHelper<I, S> extends DefaultDOTVisualizationHelper<Pair<I, S>, Pair<Pai
     protected Collection<Pair<I, S>> initialNodes() {
         return subModels.entrySet()
                         .stream()
-                        .map(e -> new Pair<>(e.getKey(), e.getValue().getInitialState()))
+                        .map(e -> Pair.of(e.getKey(), e.getValue().getInitialState()))
                         .collect(Collectors.toSet());
     }
 

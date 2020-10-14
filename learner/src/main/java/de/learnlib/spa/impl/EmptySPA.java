@@ -17,8 +17,6 @@ package de.learnlib.spa.impl;
 import java.util.Collections;
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
 import de.learnlib.spa.api.SPA;
 import de.learnlib.spa.api.SPAAlphabet;
 import net.automatalib.automata.fsa.DFA;
@@ -33,7 +31,6 @@ public class EmptySPA<I> implements SPA<Void, I> {
         this.alphabet = alphabet;
     }
 
-    @Nullable
     @Override
     public I getInitialProcedure() {
         return null;
@@ -54,13 +51,11 @@ public class EmptySPA<I> implements SPA<Void, I> {
         return new CompactSimpleGraph<>(0);
     }
 
-    @Nullable
     @Override
     public Boolean computeSuffixOutput(Iterable prefix, Iterable suffix) {
         return false;
     }
 
-    @Nullable
     @Override
     public Void getTransition(Void state, I input) {
         return null;
@@ -71,7 +66,6 @@ public class EmptySPA<I> implements SPA<Void, I> {
         return false;
     }
 
-    @Nullable
     @Override
     public Void getInitialState() {
         return null;

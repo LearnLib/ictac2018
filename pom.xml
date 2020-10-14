@@ -5,15 +5,15 @@
 
     <groupId>de.learnlib.spa</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT-learnlib-0.16.0</version>
     <packaging>pom</packaging>
 
     <name>procedural-parent</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <automatalib.version>0.7.1</automatalib.version>
-        <learnlib.version>0.13.1</learnlib.version>
+        <automatalib.version>0.10.0</automatalib.version>
+        <learnlib.version>0.16.0</learnlib.version>
         <slf4j.version>1.7.10</slf4j.version>
     </properties>
 

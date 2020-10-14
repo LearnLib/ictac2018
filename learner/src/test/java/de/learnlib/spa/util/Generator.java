@@ -25,7 +25,7 @@ import net.automatalib.automata.fsa.DFA;
 import net.automatalib.automata.fsa.impl.compact.CompactDFA;
 import net.automatalib.util.automata.random.RandomAutomata;
 import net.automatalib.words.Alphabet;
-import net.automatalib.words.impl.SimpleAlphabet;
+import net.automatalib.words.impl.GrowingMapAlphabet;
 
 public class Generator {
 
@@ -33,7 +33,7 @@ public class Generator {
 
         final Map<I, DFA<Integer, I>> dfas = Maps.newHashMapWithExpectedSize(alphabet.getNumCalls());
 
-        final Alphabet<I> proceduralAlphabet = new SimpleAlphabet<>();
+        final Alphabet<I> proceduralAlphabet = new GrowingMapAlphabet<>();
         proceduralAlphabet.addAll(alphabet.getCallAlphabet());
         proceduralAlphabet.addAll(alphabet.getInternalAlphabet());
 

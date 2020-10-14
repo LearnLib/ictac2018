@@ -35,13 +35,13 @@ public final class LearningRun {
 
     public static <M extends DeterministicAcceptorTS<?, I>, I, D> LearningStatistics<I> run(final Alphabet<I> inputAlphabet,
                                                                                             final Supplier<MembershipOracle<I, D>> membershipOracleSupplier,
-                                                                                            final Function<MembershipOracle<I, D>, EquivalenceOracle<M, I, D>> equivalenceOracleFunction,
+                                                                                            final Function<MembershipOracle<I, D>, EquivalenceOracle<? super M, I, D>> equivalenceOracleFunction,
                                                                                             final Function<MembershipOracle<I, D>, LearningAlgorithm<? extends M, I, D>> learningAlgorithmFunction) {
 
         final MembershipOracle<I, D> mqOracle = membershipOracleSupplier.get();
         final JointCounterOracle<I, D> statMq = new JointCounterOracle<>(mqOracle);
 
-        final EquivalenceOracle<M, I, D> eqOracle = equivalenceOracleFunction.apply(mqOracle);
+        final EquivalenceOracle<? super M, I, D> eqOracle = equivalenceOracleFunction.apply(mqOracle);
 
         final LearningAlgorithm<? extends M, I, D> learner = learningAlgorithmFunction.apply(statMq);
 

@@ -16,8 +16,6 @@ package de.learnlib.spa.api;
 
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
 import net.automatalib.automata.concepts.InputAlphabetHolder;
 import net.automatalib.automata.concepts.SuffixOutput;
 import net.automatalib.automata.fsa.DFA;
@@ -33,7 +31,6 @@ import net.automatalib.ts.acceptors.DeterministicAcceptorTS;
 public interface SPA<S, I>
         extends GraphViewable, InputAlphabetHolder<I>, DeterministicAcceptorTS<S, I>, SuffixOutput<I, Boolean> {
 
-    @Nullable
     I getInitialProcedure();
 
     @Override

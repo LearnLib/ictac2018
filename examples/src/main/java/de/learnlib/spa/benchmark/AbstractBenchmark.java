@@ -28,7 +28,6 @@ import de.learnlib.algorithms.discriminationtree.vpda.DTLearnerVPDA;
 import de.learnlib.algorithms.ttt.vpda.TTTLearnerVPDA;
 import de.learnlib.api.AccessSequenceTransformer;
 import de.learnlib.api.algorithm.LearningAlgorithm;
-import de.learnlib.api.algorithm.feature.SupportsGrowingAlphabet;
 import de.learnlib.api.oracle.EquivalenceOracle;
 import de.learnlib.api.oracle.MembershipOracle;
 import de.learnlib.spa.LocalRefinementCounter;
@@ -39,6 +38,7 @@ import de.learnlib.spa.config.LStarBaseAdapter;
 import de.learnlib.spa.config.RivestSchapireAdapter;
 import de.learnlib.spa.config.TTTAdapter;
 import de.learnlib.spa.learner.SPALearner;
+import net.automatalib.SupportsGrowingAlphabet;
 import net.automatalib.ts.acceptors.DeterministicAcceptorTS;
 import net.automatalib.words.Alphabet;
 import org.slf4j.Logger;
@@ -156,5 +156,5 @@ public abstract class AbstractBenchmark<I> {
 
     protected abstract Supplier<MembershipOracle<I, Boolean>> getMembershipOracleSupplier();
 
-    protected abstract Function<MembershipOracle<I, Boolean>, EquivalenceOracle<DeterministicAcceptorTS<?, I>, I, Boolean>> getEquivalenceOracleSupplier();
+    protected abstract Function<MembershipOracle<I, Boolean>, EquivalenceOracle<? super DeterministicAcceptorTS<?, I>, I, Boolean>> getEquivalenceOracleSupplier();
 }

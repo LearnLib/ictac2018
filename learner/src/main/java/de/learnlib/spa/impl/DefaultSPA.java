@@ -17,14 +17,12 @@ package de.learnlib.spa.impl;
 import java.util.Collections;
 import java.util.Map;
 
-import javax.annotation.Nullable;
-
+import com.google.common.collect.Iterables;
 import de.learnlib.api.oracle.QueryAnswerer;
 import de.learnlib.spa.api.SPA;
 import de.learnlib.spa.api.SPAAlphabet;
 import de.learnlib.spa.view.ReachabilityView;
 import net.automatalib.automata.fsa.DFA;
-import net.automatalib.commons.util.collections.IterableUtil;
 import net.automatalib.graphs.Graph;
 import net.automatalib.ts.simple.SimpleDTS;
 import net.automatalib.words.Word;
@@ -156,7 +154,6 @@ public class DefaultSPA<S, I> implements SPA<State<I, S>, I>, SimpleDTS<State<I,
         return this.init;
     }
 
-    @Nullable
     @Override
     public I getInitialProcedure() {
         return initialCall;
@@ -177,7 +174,6 @@ public class DefaultSPA<S, I> implements SPA<State<I, S>, I>, SimpleDTS<State<I,
         return new ReachabilityView<>(alphabet, procedures);
     }
 
-    @Nullable
     @Override
     public Boolean answerQuery(Word<I> prefix, Word<I> suffix) {
         return this.computeSuffixOutput(prefix, suffix);
@@ -185,6 +181,6 @@ public class DefaultSPA<S, I> implements SPA<State<I, S>, I>, SimpleDTS<State<I,
 
     @Override
     public Boolean computeSuffixOutput(Iterable<? extends I> iterable, Iterable<? extends I> iterable1) {
-        return this.accepts(IterableUtil.concat(iterable, iterable1));
+        return this.accepts(Iterables.concat(iterable, iterable1));
     }
 }

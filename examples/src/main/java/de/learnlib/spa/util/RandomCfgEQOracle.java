@@ -23,10 +23,9 @@ import java.util.stream.Stream;
 import com.google.common.collect.Streams;
 import de.learnlib.api.oracle.MembershipOracle;
 import de.learnlib.oracle.equivalence.vpda.RandomWellMatchedWordsEQOracle;
-import de.learnlib.spa.api.SPAAlphabet;
 import enumeration.biginteger.BIEnumerator;
 import grammar.cfg.MyGrammar;
-import net.automatalib.ts.acceptors.DeterministicAcceptorTS;
+import net.automatalib.automata.concepts.Output;
 import net.automatalib.words.Word;
 import net.automatalib.words.WordBuilder;
 
@@ -46,13 +45,12 @@ public class RandomCfgEQOracle extends RandomWellMatchedWordsEQOracle<String> {
     private final Collection<Word<String>> additionalQueries;
 
     public RandomCfgEQOracle(MembershipOracle<String, Boolean> mqOracle,
-                             SPAAlphabet<String> alphabet,
                              Random random,
                              MyGrammar grammar,
                              String startProcedure,
                              String returnSymbol,
                              Collection<Word<String>> additionalQueries) {
-        super(random, mqOracle, alphabet, CALL_PROB, MAX_TESTS, 0, CE_LENGTH);
+        super(random, mqOracle, CALL_PROB, MAX_TESTS, 0, CE_LENGTH);
 
         this.cfgEnumerator = new BIEnumerator(grammar);
 
@@ -62,7 +60,7 @@ public class RandomCfgEQOracle extends RandomWellMatchedWordsEQOracle<String> {
     }
 
     @Override
-    protected Stream<Word<String>> generateTestWords(DeterministicAcceptorTS<?, String> hypothesis,
+    protected Stream<Word<String>> generateTestWords(Output<String, Boolean> hypothesis,
                                                      Collection<? extends String> inputs) {
 
         final WordBuilder<String> wb = new WordBuilder<>();
